@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3D图形变换</title>
+		<style>
+			body{
+				margin: 0;
+				background-color: #333;
+				/*将做动画的元素 溢出body范围后剪除*/
+				overflow: hidden;
+				
+				/*perspective 景深  透视值  规定了3D立体视图的可视效果
+				 其实就是看物体的远近*/
+				perspective: 1500px;
+				
+				/*perspective-origin 看物体的一个基点位置
+				 定义了3D元素基于x轴和y轴方向的看物体的位置  可以做一定的微调*/
+				perspective-origin: 200% 50%;
+			}
+			body>section{
+				width: 300px;
+				height: 300px;
+				background-color: lightblue;
+				margin: 100px auto;
+				
+				/*transform: rotateX(45deg);*/
+				
+				/*缩放*/
+				/*transform: scale3d(x, y, z);*/
+				/*transform: scale3d(2, 2, 2);*/
+				
+				/*平移*/
+				/*transform: translate3d(xpx, ypx, zpx);*/
+				/*transform: translate3d(0px, 0px, 200px);*/
+				
+				/*旋转*/
+				/*transform: rotate3d(x, y, z, deg);绕x/y/z轴旋转  deg旋转 */
+				/*transform: rotate3d(1, 0, 0, 30deg);*/
+				/*transform: rotate3d(0, 1, 0, 30deg);*/
+				/*transform: rotate3d(0, 0, 1, 30deg);*/
+				
+				
+				/*transform-style:变换样式  这个属性规定了如何在3D空间里面呈现被嵌套的元素*/
+				/*preserve-3d  子元素可以保留3D位置*/
+				/*flat 子元素不保留3D位置*/
+				transform-style: preserve-3d;
+				/*transform-style: flat;*/
+				
+				animation: rot 5s infinite;
+			}
+			/*关键帧*/
+			@keyframes rot{
+				from{
+					transform: rotateX(0deg) rotateY(0deg);
+				}
+				to{
+					transform: rotateX(360deg) rotateY(360deg);
+				}
+			}
+			
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: lightpink;
+				
+				/*transform: translate3d(0, 0, 200px);*/
+				transform: translateZ(200px);
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<section>
+			<div>这是一个3D旋转</div>
+		</section>
+	</body>
+</html>
